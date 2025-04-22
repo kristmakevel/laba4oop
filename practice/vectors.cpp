@@ -6,7 +6,7 @@ int main() {
     const std::ptrdiff_t size = 1000000;
     MyVector original(size);
     for (int i = 0; i < size; i++) {
-        original[i] = static_cast<int>(i);
+        original[i] = i;
     }
     MyVector copy_target(size);
     MyVector move_target(size);

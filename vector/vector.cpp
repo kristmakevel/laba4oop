@@ -1,7 +1,6 @@
 ﻿#include  <vector.hpp>
 #include <stdexcept>
 
-
 MyVector::MyVector(std::ptrdiff_t size) : size_(size) {
     data_ = std::make_unique<int[]>(size_);
 }
