@@ -8,6 +8,8 @@
 template <class T, int size>
 class MyArray {
 public:
+    ~MyArray() = default;
+
     MyArray() : size_(size) {
         data_ = std::make_unique<T[]>(size_);
     }
@@ -31,7 +33,6 @@ public:
         return *this;
     }
 
-    ~MyArray() = default;
 
     T& operator[](std::ptrdiff_t index) {
         if (index >= size_) {
