@@ -1,32 +1,34 @@
 ﻿#include <vector.hpp>
 
-
-Myvector::Myvector(std::ptrdiff_t size) : size_(size) {
-    data_ = std::make_unique<int[]>(size_);
+Myvector::Myvector(std::ptrdiff_t size)
+    : size_(size),
+    data_(std::make_unique<int[]>(size_))
+{
 }
 
-
-Myvector::Myvector(const Myvector& other) : size_(other.size_) {
-    data_ = std::make_unique<int[]>(size_);
-    for (int i = 0;i < size_;i++) {
+Myvector::Myvector(const Myvector& other)
+    : size_(other.size_),
+    data_(std::make_unique<int[]>(size_))
+{
+    for (std::ptrdiff_t i = 0; i < size_; ++i) {
         data_[i] = other.data_[i];
     }
 }
 
-
 Myvector& Myvector::operator=(const Myvector& other) {
-    if (&other != this) {
+    if (this != &other) {
         size_ = other.size_;
         data_ = std::make_unique<int[]>(size_);
-        for (int i = 0;i < size_;i++) {
+
+        for (std::ptrdiff_t i = 0; i < size_; ++i) {
             data_[i] = other.data_[i];
         }
     }
     return *this;
 }
 
-Myvector& Myvector::operator= (Myvector&& other) {
-    if (&other != this) {
+Myvector& Myvector::operator=(Myvector&& other) {
+    if (this != &other) {
         data_ = std::move(other.data_);
         size_ = other.size_;
         other.size_ = 0;
@@ -34,22 +36,23 @@ Myvector& Myvector::operator= (Myvector&& other) {
     return *this;
 }
 
-Myvector::Myvector(Myvector&& other) :data_(std::move(other.data_)), size_(other.size_) {
+Myvector::Myvector(Myvector&& other)
+    : data_(std::move(other.data_)),
+    size_(other.size_)
+{
     other.size_ = 0;
 }
 
 int& Myvector::operator[](std::ptrdiff_t index) {
-    if (index >= size_ || index < 0) {
-        throw std::invalid_argument("что-то не так с индексом");
-
+    if (index < 0 || index >= size_) {
+        throw std::out_of_range("something is wrong with an index");
     }
-    return *(data_.get() + index);
+    return data_[index];
 }
 
-int Myvector::operator[](const std::ptrdiff_t index) const {
-    if (index >= size_ || index < 0) {
-        throw std::invalid_argument("что-то не так с индексом");
-
+const int& Myvector::operator[](std::ptrdiff_t index) const {
+    if (index < 0 || index >= size_) {
+        throw std::out_of_range("something is wrong with an index");
     }
     return data_[index];
 }
