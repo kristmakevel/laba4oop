@@ -10,17 +10,17 @@ template <typename T>
 void Myswap(T& first, T& sec) {
     T third = std::move(first);
     first = std::move(sec);
-    sec = std::move(third;
+    sec = std::move(third);
 }
 
 
 template <typename T>
-std::string cotnainer_to_string(T& box) {
+std::string container_to_string(T& box) {
     std::ostringstream ostring;
-    starting = 1;
+    int starting = 1;
     for (auto thing : box) {
         if (starting != 1) {
-            ostring << ', ';
+            ostring << ", ";
         }
         starting = 0;
         ostring << thing;
@@ -53,11 +53,11 @@ int main() {
 
     std::cout << "turning a container to string\n";
     std::vector<int> smth1 = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-    std::cout << "the first vector " << container_to_string(smth1) << "\n";
+    std::cout << "vector " << container_to_string(smth1) << "\n";
 
-    std::vector <double> smth2 = { 1.23453, 2.234, 3.2345, 4.23456 };
-    std::cout << "the second vector " << container_to_string(smth2) << "\n";
+    std::list <double> smth2 = { 1.23453, 2.234, 3.2345, 4.23456 };
+    std::cout << "list " << container_to_string(smth2) << "\n";
 
-    std::vector <std::string> smth3 = { "take", "this", "cup", "away", "from", "me", "for", "i", "don't", "want", "to", "taste", "its", "poison" };
-    std::cout << "the third vector " << container_to_string(smth3) << "\n";
+    std::set <std::string> smth3 = { "take", "this", "cup", "away", "from", "me", "for", "i", "don't", "want", "to", "taste", "its", "poison" };
+    std::cout << "set " << container_to_string(smth3) << "\n";
 }
