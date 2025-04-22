@@ -18,7 +18,7 @@ public:
     MyVector& operator=(MyVector&&) noexcept; // перемещение
 
     int& operator[](std::ptrdiff_t index); // доступ для модификации
-    const int& operator[](std::ptrdiff_t index) const; // доступ для чтения <---- ИСПРАВЛЕНО
+    const int& operator[](std::ptrdiff_t index) const; // доступ для чтения
 
     std::ptrdiff_t size() const {
         return size_;
@@ -30,4 +30,3 @@ private:
 };
 
 #endif
-

@@ -3,11 +3,11 @@
 
 MyVector::MyVector() : data_(nullptr), size_(0) {}
 
-MyVector::MyVector(std::ptrdiff_t size)
-    : size_(size),
-    data_(std::make_unique<int[]>(size_))
-{
+
+MyVector::MyVector(std::ptrdiff_t size) : size_(size) {
+    data_ = std::make_unique<int[]>(size_);
 }
+
 
 MyVector::MyVector(const MyVector& other)
     : size_(other.size_),
@@ -59,4 +59,3 @@ const int& MyVector::operator[](std::ptrdiff_t index) const {
     }
     return data_[index];
 }
-
