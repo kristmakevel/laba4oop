@@ -11,11 +11,11 @@ int main() {
     }
 
 
-    MyArray <std::string, 10> string_attay;
+    MyArray <std::string, 10> string_array;
     string_array.fill(":(");
     std::cout << "\narray with string in it\n:";
-    for (int i = 0;i < arr_str.Size();i++) {
-        std::cout << string_attay[i] << " ";
+    for (int i = 0;i < string_array.Size();i++) {
+        std::cout << string_array[i] << " ";
     }
 
     MyArray <double, 20> double_array;

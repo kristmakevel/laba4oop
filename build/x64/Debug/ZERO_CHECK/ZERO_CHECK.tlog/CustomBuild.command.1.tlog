@@ -1,0 +1,10 @@
+^C:\USERS\MACKA\SOURCE\REPOS\KRISTMAKEVEL\LABA4OOP\BUILD\CMAKEFILES\718FF3387DF10EFCEF8FB7649ABBEB3A\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/macka/source/repos/kristmakevel/laba4oop -BC:/Users/macka/source/repos/kristmakevel/laba4oop/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/macka/source/repos/kristmakevel/laba4oop/build/laba4_oop.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

@@ -1,12 +1,15 @@
-﻿#include <vector.hpp>
+﻿#include  <vector.hpp>
+#include <stdexcept>
 
-Myvector::Myvector(std::ptrdiff_t size)
+MyVector::MyVector() : data_(nullptr), size_(0) {}
+
+MyVector::MyVector(std::ptrdiff_t size)
     : size_(size),
     data_(std::make_unique<int[]>(size_))
 {
 }
 
-Myvector::Myvector(const Myvector& other)
+MyVector::MyVector(const MyVector& other)
     : size_(other.size_),
     data_(std::make_unique<int[]>(size_))
 {
@@ -15,7 +18,7 @@ Myvector::Myvector(const Myvector& other)
     }
 }
 
-Myvector& Myvector::operator=(const Myvector& other) {
+MyVector& MyVector::operator=(const MyVector& other) {
     if (this != &other) {
         size_ = other.size_;
         data_ = std::make_unique<int[]>(size_);
@@ -27,7 +30,7 @@ Myvector& Myvector::operator=(const Myvector& other) {
     return *this;
 }
 
-Myvector& Myvector::operator=(Myvector&& other) {
+MyVector& MyVector::operator=(MyVector&& other) noexcept {
     if (this != &other) {
         data_ = std::move(other.data_);
         size_ = other.size_;
@@ -36,23 +39,24 @@ Myvector& Myvector::operator=(Myvector&& other) {
     return *this;
 }
 
-Myvector::Myvector(Myvector&& other)
+MyVector::MyVector(MyVector&& other) noexcept
     : data_(std::move(other.data_)),
     size_(other.size_)
 {
     other.size_ = 0;
 }
 
-int& Myvector::operator[](std::ptrdiff_t index) {
+int& MyVector::operator[](std::ptrdiff_t index) {
     if (index < 0 || index >= size_) {
-        throw std::out_of_range("something is wrong with an index");
+        throw std::out_of_range("index out of range");
     }
     return data_[index];
 }
 
-const int& Myvector::operator[](std::ptrdiff_t index) const {
+const int& MyVector::operator[](std::ptrdiff_t index) const {
     if (index < 0 || index >= size_) {
-        throw std::out_of_range("something is wrong with an index");
+        throw std::out_of_range("index out of range");
     }
     return data_[index];
 }
+

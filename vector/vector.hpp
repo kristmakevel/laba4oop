@@ -1,28 +1,33 @@
-﻿#include <iostream>
-#include <memory>
-#include <vector>
-
-
-#ifndef MYVECTOR
+﻿#ifndef MYVECTOR
 #define MYVECTOR
 
-class Myvector {
+#include <memory>
+#include <cstddef>
+#include <stdexcept>
+
+class MyVector {
 public:
-	Myvector();
-	~Myvector() = default;
-	Myvector::Myvector(std::ptrdiff_t size);
-	Myvector& operator=(const Myvector&); //копирование
-	Myvector& operator= (Myvector&&); //перемещение
-	Myvector(const Myvector&); //копирование
-	Myvector(Myvector&&); //перемещение
-	int& operator[](std::ptrdiff_t index); //обращение по индексу чтобы изменить
-	int operator[](const std::ptrdiff_t index) const; //обращение по индексу чтение
-	int size() const {
-		return size_;
-	}
+    MyVector();
+    explicit MyVector(std::ptrdiff_t size);
+    ~MyVector() = default;
+
+    MyVector(const MyVector&); // копирование
+    MyVector(MyVector&&) noexcept; // перемещение
+
+    MyVector& operator=(const MyVector&); // копирование
+    MyVector& operator=(MyVector&&) noexcept; // перемещение
+
+    int& operator[](std::ptrdiff_t index); // доступ для модификации
+    const int& operator[](std::ptrdiff_t index) const; // доступ для чтения <---- ИСПРАВЛЕНО
+
+    std::ptrdiff_t size() const {
+        return size_;
+    }
+
 private:
-	std::unique_ptr<int[]> data_;
-	std::ptrdiff_t size_ = 0;
+    std::unique_ptr<int[]> data_;
+    std::ptrdiff_t size_ = 0;
 };
 
 #endif
+

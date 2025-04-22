@@ -2,17 +2,16 @@
 #include <iostream>
 #include <vector.hpp>
 
-
 int main() {
-    const std::ptrdiff_t size = 100000000 * 3;
+    const std::ptrdiff_t size = 1000000;
 
     MyVector original(size);
+    for (int i = 0; i < size; ++i) {
+        original[i] = i;
+    }
+
     MyVector copy_target(size);
     MyVector move_target(size);
-
-    for (std::ptrdiff_t i = 0; i < size; ++i) {
-        original[i] = i + 5;
-    }
 
     // тест копирования
     const auto copy_start = std::chrono::high_resolution_clock::now();
@@ -27,6 +26,5 @@ int main() {
     const auto move_end = std::chrono::high_resolution_clock::now();
     const std::chrono::duration<double> move_time = move_end - move_start;
     std::cout << "time of moving: " << move_time.count() << " seconds\n";
-
     return 0;
 }

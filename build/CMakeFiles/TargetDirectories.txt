@@ -1,0 +1,7 @@
+C:/Users/macka/source/repos/kristmakevel/laba4oop/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/macka/source/repos/kristmakevel/laba4oop/build/CMakeFiles/ZERO_CHECK.dir
+C:/Users/macka/source/repos/kristmakevel/laba4oop/build/vector/CMakeFiles/vector.dir
+C:/Users/macka/source/repos/kristmakevel/laba4oop/build/practice/CMakeFiles/vectors.dir
+C:/Users/macka/source/repos/kristmakevel/laba4oop/build/practice/CMakeFiles/numbtwo.dir
+C:/Users/macka/source/repos/kristmakevel/laba4oop/build/practice/CMakeFiles/arrays.dir
+C:/Users/macka/source/repos/kristmakevel/laba4oop/build/array/CMakeFiles/array.dir
